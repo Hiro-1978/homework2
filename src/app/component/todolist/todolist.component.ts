@@ -1,4 +1,3 @@
-import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../models/Todo'
 
@@ -9,32 +8,37 @@ import { Todo } from '../../models/Todo'
 })
 export class TodosComponent implements OnInit {
 
-  todos: Todo[] = [];
-  inputTodo:String = "";
+  todos!: Todo[];
+  name!: string;
+  description!: string;
   constructor() { }
 
   ngOnInit(): void {
     this.todos=[
      { 
-      content: 'ตื่นนอน',
+      name: 'ตื่นนอน',
+      description: 'ตื่นนอนตอน 6 โมงเช้า',
       completed: false
       },
      { 
-      content: 'อาบน้ำ',
+      name: 'อาบน้ำ',
+      description: 'อาบน้ำด้วยความสบายใจ',
       completed: false
       }
     ]
   }
   deleteTodo (id:number){
-    this.todos = this.todos.filter((v, i) => i !==id);
+    this.todos = this.todos.filter((Todo, i) => i !==id);
   }
 
   addTodo (){
     this.todos.push({
-      content: this.inputTodo,
+      name: this.name,
+      description: this.description,
       completed: false
     });
-    this.inputTodo = ""
+    this.name = "";
+    this.description = "";
   }
   
 }

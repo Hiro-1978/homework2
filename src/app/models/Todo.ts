@@ -1,4 +1,5 @@
 export class Todo{
-    content!: String;
+    name!: string;
+    description!: String;
     completed!: boolean;
 }
